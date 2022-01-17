@@ -1,0 +1,82 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            View Patient's Data
+        </title>
+    </head>
+    <body>
+        <h2>
+            Patient Data
+        </h2>
+
+        <p>
+            {% block table %}
+            <table style="width:62%" class="table table-bordered">
+                <tr>
+                  <th>CRnum</th>
+                  <th>Name</th>
+                  <th>PR</th>
+                  <th>BP_SYSTOLIC</th>
+                  <th>BP_DIASTOLIC</th>
+                  <th>TEMPERATURE</th>
+                  <th>RR</th>
+                  <th>SPO2</th>
+                  <th>RBS</th>
+                  <th>Oxygen_Device</th>
+                  <th>FIO2</th>
+                  <th>OTHER</th>
+                  <th>REMARKS</th>
+                  <th>GCS</th>
+                  <th>URINE</th>
+                  <th>INOTROPE</th>
+                  <th>POSITION</th>
+                  <th>INTAKE</th>
+                  <th>STEROIDS</th>
+                  <th>ANTIBIOTICS</th>
+                  <th>CLEXANE</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                </tr>
+
+                {% for d in patiententries %}
+                <tr>
+                  <td>{{ d.CRnum }}</td>
+                  <td>{{ d.name }}</td>
+                  <td>{{ d.PR|int}}</td>
+                  <td>{{ d.BP_SYSTOLIC|int}}</td>
+                  <td>{{ d.BP_DIASTOLIC|int}}</td>
+                  <td>{{ d.TEMPERATURE }}</td>
+                  <td>{{ d.RR|int}}</td>
+                  <td>{{ d.SPO2|int}}</td>
+                  <td>{{ d.RBS }}</td>
+                  <td>{{ d.Oxygen_Device }}</td>
+                  <td>{{ d.FIO2 }}</td>
+                  <td>{{ d.OTHER }}</td>
+                  <td>{{ d.REMARKS }}</td>
+                  <td>{{ d.GCS }}</td>
+                  <td>{{ d.URINE|int}}</td>
+                  <td>{{ d.INOTROPE }}</td>
+                  <td>{{ d.POSITION }}</td>
+                  <td>{{ d.INTAKE|int}}</td>
+                  <td>{{ d.STEROIDS }}</td>
+                  <td>{{ d.ANTIBIOTICS }}</td>
+                  <td>{{ d.CLEXANE }}</td>
+                  <td>{{ d.DATE}}</td>
+                  <td>{{ d.TIME }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+            {% endblock %}
+        </p>
+        <p>
+            <a href="/">Proceed back to home</a>
+        </p>
+    </body>
+</html>
+{% endblock %}

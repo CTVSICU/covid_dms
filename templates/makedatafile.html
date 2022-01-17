@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Print data to a JPEG file</title>
+    </head>
+    <body>
+        <h2>
+            Patient data
+
+        </h2>
+        <p>
+            Generated at {{endtime}}, {{enddate}} <br>
+            Shift began at {{starttime}}, {{startdate}}
+        </p>
+        <p>
+            <table style="width:62%" class="table table-bordered">
+                <tr>
+                  <th>Name</th>
+                  <th>PR</th>
+                  <th>BP</th>
+                  <th>TEMP</th>
+                  <th>RR</th>
+                  <th>SPO2</th>
+                  <th>RBS</th>
+                  <th>O2_Device</th>
+                  <th>FIO2</th>
+                  <th>OTHER</th>
+                  <th>REMARKS</th>
+                  <th>GCS</th>
+                  <th>URINE</th>
+                  <th>INOTROPE</th>
+                  <th>POSITION</th>
+                  <th>INTAKE</th>
+                  <th>STEROIDS</th>
+                  <th>ANTIBIOTICS</th>
+                  <th>CLEXANE</th>
+                </tr>
+
+                {% for d in shiftdata %}
+                {% set rowcolor = "white" %}
+                {% if d.Discharged == True %}
+                  {%set rowcolor = "#48c774" %}
+                {% endif %}
+                <tr bgcolor={{rowcolor}}>
+                  <td>{{ d.name }}</td>
+                  <td>{{ d.PR|int}}</td>
+                  <td>{{ d.BP_SYSTOLIC|int}}/{{d.BP_DIASTOLIC|int}}</td>
+                  <td>{{ d.TEMPERATURE }}</td>
+                  <td>{{ d.RR|int}}</td>
+                  <td>{{ d.SPO2|int}}</td>
+                  <td>{{ d.RBS }}</td>
+                  <td>{{ d.Oxygen_Device }}</td>
+                  <td>{{ d.FIO2 }}</td>
+                  <td>{{ d.OTHER }}</td>
+                  <td>{{ d.REMARKS }}</td>
+                  <td>{{ d.GCS }}</td>
+                  <td>{{ d.URINE|int}}</td>
+                  <td>{{ d.INOTROPE }}</td>
+                  <td>{{ d.POSITION }}</td>
+                  <td>{{ d.INTAKE|int}}</td>
+                  <td>{{ d.STEROIDS }}</td>
+                  <td>{{ d.ANTIBIOTICS }}</td>
+                  <td>{{ d.CLEXANE }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </p>
+        <p>
+            <div class="container">
+                <h2>Current Shift</h2>
+                {{ currshift }}
+                <h2>Next Shift</h2>
+                {{ nextshift }}
+            </div>
+        </p>
+
+</html>
